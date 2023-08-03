@@ -71,24 +71,19 @@ pmood_data <- data %>%
   select(year, valor) 
 
 var9499 <- round((filter(pmood_data, year == 1999) %>% pull(valor) - 
-                    filter(pmood_data, year == 1994) %>% pull(valor)) / 
-                   filter(pmood_data, year == 1994) %>% pull(valor) * 100,
+                    filter(pmood_data, year == 1994) %>% pull(valor)),
                  digits = 2)
 var9904 <- round((filter(pmood_data, year == 2004) %>% pull(valor) - 
-                    filter(pmood_data, year == 1999) %>% pull(valor)) / 
-                   filter(pmood_data, year == 1999) %>% pull(valor) * 100,
+                    filter(pmood_data, year == 1999) %>% pull(valor)),
                  digits = 2)
 var0409 <- round((filter(pmood_data, year == 2009) %>% pull(valor) - 
-                    filter(pmood_data, year == 2004) %>% pull(valor))/ 
-                   filter(pmood_data, year == 2004) %>% pull(valor) * 100,
+                    filter(pmood_data, year == 2004) %>% pull(valor)),
                  digits = 2)
 var0914 <- round((filter(pmood_data, year == 2014) %>% pull(valor) - 
-                    filter(pmood_data, year == 2009) %>% pull(valor))/ 
-                   filter(pmood_data, year == 2009) %>% pull(valor) * 100,
+                    filter(pmood_data, year == 2009) %>% pull(valor)),
                  digits = 2)
 var1419 <- round((filter(pmood_data, year == 2019) %>% pull(valor) - 
-                    filter(pmood_data, year == 2014) %>% pull(valor))/ 
-                   filter(pmood_data, year == 2014) %>% pull(valor) * 100,
+                    filter(pmood_data, year == 2014) %>% pull(valor)),
                  digits = 2)
 
 var_pmood <- c(var9499, var9904, var0409, var0914, var1419)
@@ -103,7 +98,7 @@ presidentes <- readxl::read_excel("data/pela_data.xlsx")
 presidentes <- presidentes %>% 
   mutate(mean_ideo_lag = lag(mean_ideo)) %>% 
   filter(pte != "Lacalle") %>% 
-  mutate(valor = ((mean_ideo - mean_ideo_lag) / mean_ideo_lag) * 100) %>% 
+  mutate(valor = (mean_ideo - mean_ideo_lag) * 10) %>% 
   select(valor) 
 
 data_var$var_presi <- presidentes$valor
@@ -126,21 +121,23 @@ ggplot(data_var,
                               "2014-19" = "T. Vázquez (2014-2019) \n (Frente Amplio)")) +
   theme(legend.position = "bottom") +
   coord_flip() +
-  annotate("segment", x = 5, y = 100, xend = 5, yend = 110,
+  annotate("segment", x = 5, y = 30, xend = 5, yend = 40,
            arrow = arrow(type = "closed", length = unit(0.03, "npc"))) +
   annotate("text",
-           label = "more leftist government",
+           label = "more liberal government",
            x = 5.25, 
-           y = 100,
-           fontface = "bold") +
+           y = 25,
+           fontface = "bold",
+           size = 6) +
   annotate("text",
-           label = "more leftist mood",
+           label = "more liberal mood",
            x = 4.75, 
-           y = 90,
-           fontface = "bold") +
+           y = 25,
+           fontface = "bold",
+           size = 6) +
   scale_fill_manual(name = "",
                     values = c("black", 
                                "#99A3A4"),
                     labels = c("Change in Policy Mood", "Change in President's ideology")) +
-  ylim(-50, 140)
+  ylim(-40, 40)
 
