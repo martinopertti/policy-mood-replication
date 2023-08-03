@@ -9,7 +9,7 @@ library(tidyverse)
 
 rm(list = ls())
 
-source("R/Extract.r") # Policy Mood function (www.stimson.web.unc.edu)
+source("R/03-extract.r") # Policy Mood function (www.stimson.web.unc.edu)
 
 
 ## 1. Load and prepare data   ==============================================
