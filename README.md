@@ -6,10 +6,11 @@ Replication materials for "Policy Mood and Thermostatic Representation in Develo
 
 ## Data
 - `data/raw-data.xlsx`: dataframe with raw marginals for each question administration
-- `data/pmood.xlsx`: dataframe with the policy mood series in Uruguay
+- `data/pmood.xlsx`: dataframe with the policy mood series in Uruguay and other indicators
 - `data/pela_data.xlsx`: dataframe with the policy mood series in Uruguay
 
 ## Analysis
 
-+ `pmood-estimation.R`: this script estimate the Uruguayan policy mood using the raw data file
-+ `figures.R`: this script creates the paper's figures using the pmood data file and president's ideology dataframe
++ `R/01-estimation.R`: this script estimate the Uruguayan policy mood using the raw data file
++ `R/02-analysis.R`: this script creates the paper's figures using the pmood data file and president's ideology dataframe
++ `R/02-extract.R`: Stimson's Policy Mood functions
