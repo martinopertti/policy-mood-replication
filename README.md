@@ -13,3 +13,4 @@ Replication materials for "Policy Mood and Thermostatic Representation in Develo
 
 + `R/01-estimation.R`: this script estimate the Uruguayan policy mood using the raw data file
 + `R/02-analysis.R`: this script creates the paper's figures using the pmood data file and president's ideology dataframe
++ `R/02-extract.R`: Stimson's Policy Mood functions
